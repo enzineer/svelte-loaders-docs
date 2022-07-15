@@ -4,6 +4,7 @@
 	--header-height: 50px;
 	--sidebar-width: 250px;
 	background-color: #fff;
+
 	--header-bg: #485460;
 	--header-color: #fff;
 	--sidebar-bg: #f1f2f6;
@@ -16,6 +17,7 @@
 * {
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 
 button {
@@ -67,4 +69,7 @@ input[type='color']::-webkit-color-swatch {
 }
 .blue {
 	color: blue;
+}
+.purple {
+	color: purple;
 }

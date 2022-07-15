@@ -12,7 +12,7 @@
 <div class="sidebar">
 	<div class="list-container">
 		<div class="menu-item" class:active={loc === ''} on:click={() => push('/')}>Getting Started</div>
-		<div class="menu-item">Loaders</div>
+		<div class="section">Loaders</div>
 		<div class="submenu">
 			{#each Object.keys(LoaderTypes) as loader}
 				<div
@@ -43,15 +43,19 @@
 		margin-top: 30px;
 		width: 95%;
 	}
-	.menu-item {
-		margin: 10px 0px 10px 30px;
+	.menu-item,
+	.section {
+		margin-left: 30px;
 		color: #222;
 		border-left: 3px transparent;
-		padding-left: 5px;
+		padding: 8px 16px;
 		cursor: pointer;
 		font-size: 16px;
+		border-radius: 3px;
 	}
-
+	.menu-item:hover {
+		background-color: #fff;
+	}
 	.submenu {
 		margin-left: 15px;
 		margin-top: 15px;
@@ -61,8 +65,8 @@
 		color: #444;
 	}
 	.active {
-		border-left: 3px solid tomato;
-		border-radius: 3px;
+		border-left: 3px solid #333;
 		font-weight: bold;
+		background-color: #fff;
 	}
 </style>
