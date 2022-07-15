@@ -9,7 +9,7 @@
 		<div class="npm">$ <span class="red">npm install </span> svelte-loaders</div>
 		<div class="seperator">#or</div>
 
-		<div class="yarn">$ <span class="red"> npm install </span> svelte-loaders</div>
+		<div class="yarn">$ <span class="red"> yarn add </span> svelte-loaders</div>
 	</div>
 </div>
 
@@ -40,5 +40,6 @@
 		justify-content: center;
 		background-color: var(--sidebar-bg);
 		border-radius: 8px;
+		padding-left: 10px;
 	}
 </style>

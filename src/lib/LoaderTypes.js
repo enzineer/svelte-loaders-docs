@@ -13,6 +13,7 @@ import {
 	Triangle,
 	Watch,
 } from 'svelte-loaders'
+import * as LoaderDefaults from 'svelte-loaders/defaults'
 const _defaults = { visible: true, height: 100, width: 100, color: '#16a085' }
 export const LoaderTypes = {
 	BallTriangle: { component: BallTriangle, defaults: { ..._defaults } },
@@ -29,3 +30,4 @@ export const LoaderTypes = {
 	Triangle: { component: Triangle, defaults: { ..._defaults } },
 	Watch: { component: Watch, defaults: { ..._defaults } },
 }
+export const GetDefaults = (type) => LoaderDefaults[type]

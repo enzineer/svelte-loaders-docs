@@ -23,10 +23,19 @@
 				</div>
 			{/each}
 		</div>
+		<div class="menu-item sandbox">
+			<a href="https://codesandbox.io/s/vibrant-keller-1s7000?file=/App.svelte" target="_blank"
+				>Codesandbox</a
+			>
+		</div>
 	</div>
 </div>
 
 <style>
+	a {
+		text-decoration: none;
+		color: #222;
+	}
 	.sidebar {
 		position: absolute;
 		top: var(--header-height);

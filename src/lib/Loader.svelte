@@ -1,10 +1,11 @@
 <script>
-	import { LoaderTypes } from './LoaderTypes'
+	import { LoaderTypes, GetDefaults } from './LoaderTypes'
 	export let params = {}
-	let propsToLoader = LoaderTypes[params.type].defaults
+	let propsToLoader = GetDefaults(params.type)
 	let codeString = ''
 	let importStatement = ''
 	const codeGenerator = (type, props) => {
+		propsToLoader = GetDefaults(params.type)
 		let propString = ' '
 		Object.keys(props).forEach((key) => {
 			let v = props[key]
@@ -75,7 +76,7 @@
 		padding: 15vh 0 5vh 0;
 	}
 	.loader-with-snippet {
-		width: 60%;
+		width: 50%;
 		height: 50%;
 		border-radius: 10px;
 		border: 1px solid #eee;
@@ -97,7 +98,7 @@
 		/* border: 1px solid #eee; */
 		/* border-radius: 0px 20px 20px 0px; */
 		border-left: none;
-		width: 20%;
+		max-width: 40%;
 		height: 50%;
 		overflow: auto;
 		padding-left: 10px;
