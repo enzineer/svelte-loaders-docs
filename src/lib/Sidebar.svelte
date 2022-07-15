@@ -1,7 +1,6 @@
 <script>
 	import { push, location } from 'svelte-spa-router'
 	import { LoaderTypes } from './LoaderTypes'
-	console.log($location.split('/'))
 	let loc = ''
 	location.subscribe((e) => {
 		let l = e.split('/')
