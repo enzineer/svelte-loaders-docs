@@ -1,7 +1,7 @@
 <div class="getting-started">
 	<div class="h3">Getting started</div>
 	<div class="message">
-		<code>svelte-loaders</code> provides customizable Svelte svg spinner/loader component which can be implemented
+		<code>svelte-loaders</code> provides customizable svelte svg spinner/loader component which can be implemented
 		for async await operation before data loads to the view.
 	</div>
 	<div class="h3">Installation</div>
