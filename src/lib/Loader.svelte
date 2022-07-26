@@ -1,14 +1,19 @@
 <script>
-	import { LoaderTypes, GetDefaults } from './LoaderTypes'
+	import { LoaderTypes, GetDefaults, rawDefaults } from './LoaderTypes'
 	export let params = {}
 	let propsToLoader = GetDefaults(params.type)
+	let raw = {}
 	let codeString = ''
 	let importStatement = ''
-	const codeGenerator = (type, props) => {
-		propsToLoader = GetDefaults(params.type)
+	const codeGenerator = (type) => {
+		let newRaw = rawDefaults[params.type]
+		console.log(newRaw)
+		raw = newRaw
 		let propString = ' '
-		Object.keys(props).forEach((key) => {
-			let v = props[key]
+		propsToLoader = GetDefaults(params.type)
+		Object.keys(newRaw).forEach((key) => {
+			if (key === 'secondaryColor') return
+			let v = newRaw[key]
 			let value = typeof v === 'string' ? `"${v}"` : `{${v}}`
 			propString = propString + ` <span class='blue'>${key}</span>=${value}`
 		})
@@ -17,14 +22,14 @@
 			${type}</span>} <span class='purple'>from</span> 'svelte-loaders'`
 	}
 	$: {
-		codeGenerator(params.type, propsToLoader)
+		codeGenerator(params.type)
 	}
 </script>
 
 <div class="loader-container">
 	<div class="loader-with-snippet">
 		<div class="loader fc">
-			<svelte:component this={LoaderTypes[params.type].component} {...propsToLoader} />
+			<svelte:component this={LoaderTypes[params.type]} {...propsToLoader} />
 		</div>
 		<div class="code-snippet fc">
 			<span class="html">{@html importStatement}</span>
@@ -38,11 +43,11 @@
 				<th>type</th>
 				<th>default value</th>
 			</tr>
-			{#each Object.keys(propsToLoader) as prop}
+			{#each Object.keys(raw) as key}
 				<tr class="prop-type">
-					<td>{prop}</td>
-					<td>{typeof propsToLoader[prop]}</td>
-					<td>{propsToLoader[prop]}</td>
+					<td>{key}</td>
+					<td>{typeof raw[key]}</td>
+					<td>{raw[key]}</td>
 				</tr>
 			{/each}
 		</table>
@@ -63,7 +68,7 @@
 	}
 	.prop-type {
 		height: 30px;
-		margin-left: 5px;
+		margin: 5px;
 	}
 
 	.loader-container {
@@ -72,23 +77,30 @@
 		height: 100%;
 		position: relative;
 		display: flex;
-		justify-content: center;
-		padding: 15vh 0 5vh 0;
+		flex-direction: column;
+		align-items: center;
+	}
+	@media (min-width: 768px) {
+		.loader-container {
+			flex-direction: row;
+			justify-content: center;
+		}
 	}
 	.loader-with-snippet {
-		width: 50%;
+		width: 55%;
 		height: 50%;
 		border-radius: 10px;
 		border: 1px solid #eee;
 	}
 	.loader {
 		overflow: auto;
-		height: calc(100% - 60px);
+		height: calc(100% - 80px);
 	}
 	.code-snippet {
 		border-top: 1px solid #eee;
-		overflow: scroll;
+		overflow: auto;
 		flex-direction: column;
+		height: 80px;
 	}
 	.html {
 		padding: 5px 0px 5px 0px;
@@ -99,7 +111,7 @@
 		/* border-radius: 0px 20px 20px 0px; */
 		border-left: none;
 		max-width: 40%;
-		height: 50%;
+		max-height: 50%;
 		overflow: auto;
 		padding-left: 10px;
 	}

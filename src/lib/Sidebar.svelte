@@ -23,19 +23,10 @@
 				</div>
 			{/each}
 		</div>
-		<div class="menu-item sandbox">
-			<a href="https://codesandbox.io/s/vibrant-keller-1s7000?file=/App.svelte" target="_blank"
-				>Codesandbox</a
-			>
-		</div>
 	</div>
 </div>
 
 <style>
-	a {
-		text-decoration: none;
-		color: #222;
-	}
 	.sidebar {
 		position: absolute;
 		top: var(--header-height);
@@ -53,13 +44,17 @@
 	}
 	.menu-item,
 	.section {
+		width: 100%;
 		margin-left: 30px;
 		color: #222;
 		border-left: 3px transparent;
-		padding: 8px 16px;
+		padding: 8px 0px 8px 8px;
 		cursor: pointer;
 		font-size: 16px;
-		border-radius: 3px;
+	}
+	.section {
+		margin-top: 10px;
+		font-weight: bold;
 	}
 	.menu-item:hover {
 		background-color: #fff;
@@ -71,10 +66,10 @@
 	.sub-item {
 		font-size: 14px;
 		color: #444;
+		border-left: 2px solid #eee;
 	}
 	.active {
-		border-left: 3px solid #333;
-		font-weight: bold;
+		border-left: 2px solid #ff3e00;
 		background-color: #fff;
 	}
 </style>
